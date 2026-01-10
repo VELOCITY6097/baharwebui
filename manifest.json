@@ -1,5 +1,5 @@
 {
-  "name": "FuelMaster Pro",
+  "name": "Bahar Web UI",
   "short_name": "FuelMaster",
   "start_url": "./",
   "display": "standalone",
@@ -7,7 +7,7 @@
   "theme_color": "#0b1f33",
   "icons": [
     {
-      "src": "icon-192.png",
+      "src": "bpcl.png",
       "sizes": "192x192",
       "type": "image/png"
     },
@@ -18,3 +18,4 @@
     }
   ]
 }
+
