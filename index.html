@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>FuelMaster Pro</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+</head>
+<body>
+
+    <header>
+        <div class="header-content">
+            <p id="date-display"></p>
+            <h2 id="page-title">Home</h2>
+        </div>
+    </header>
+
+    <main id="content">
+        <section id="home" class="page active">
+            <div class="welcome-card main-dashboard-card">
+                <div class="dashboard-header">
+                    <div class="status-indicator-top">
+                        <span class="pulse-dot"></span>
+                        <span class="status-text">Operational</span>
+                    </div>
+                    <p id="date-display-large" class="date-badge"></p>
+                </div>
+                <h3>System Control</h3>
+                <p class="dashboard-subtitle">All calculation engines and localized density tables are synced and active.</p>
+            </div>
+            
+            <div class="card overview-card">
+                <h2 class="overview-title">📋 Tool Overview</h2>
+                
+                <div class="tools-grid">
+                    <div class="tool-summary-box density-bg">
+                        <div class="tool-header">
+                            <span class="tool-icon-circle">🧪</span>
+                            <strong>Density</strong>
+                        </div>
+                        <p>Standardize to 15°C. Range: 700-900 kg/m³ | Temp: 0-50°C.</p>
+                    </div>
+
+                    <div class="tool-summary-box stock-bg">
+                        <div class="tool-header">
+                            <span class="tool-icon-circle">⛯</span>
+                            <strong>Stock</strong>
+                        </div>
+                        <p>Live inventory volume. Monitoring 2 Main Storage Tanks.</p>
+                    </div>
+
+                    <div class="tool-summary-box invoice-bg">
+                        <div class="tool-header">
+                            <span class="tool-icon-circle">🚛</span>
+                            <strong>Invoice</strong>
+                        </div>
+                        <p>Density variance audit between Tanker & official Challan.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="density-page" class="page">
+            <div class="card">
+                <div class="card-header">
+                    <h2>🧪 Density Lookup</h2>
+                    <p>Standardize density to 15°C</p>
+                </div>
+                <div class="input-group">
+                    <label>Observed Density</label>
+                    <input type="number" id="obsDensity" placeholder="e.g. 742" step="any">
+                </div>
+                <div class="input-group">
+                    <label>Temperature (°C)</label>
+                    <input type="number" id="temp" placeholder="e.g. 25.5" step="0.5">
+                </div>
+                <button class="calc-btn" id="btnCalcDensity">Calculate Density</button>
+                <div id="resDensity" class="result-area"></div>
+            </div>
+        </section>
+
+        <section id="tank-page" class="page">
+            <div class="card">
+                <div class="card-header">
+                    <h2>🛢️ Stock Volume</h2>
+                    <p>Convert dip reading to Litres</p>
+                </div>
+                <div class="input-group">
+                    <label>Dip Reading (cm)</label>
+                    <input type="number" id="dipReading" placeholder="0.00">
+                </div>
+                <button class="calc-btn" id="btnCalcTank">Calculate Volume</button>
+                <div id="resTank" class="result-area"></div>
+            </div>
+        </section>
+
+        <section id="invoice-page" class="page">
+            <div class="card">
+                <div class="card-header">
+                    <h2>🚛 Invoice Audit</h2>
+                    <p>Compare Tanker vs Challan Density</p>
+                </div>
+                
+                <div class="input-group">
+                    <label>Observed Density (Tanker)</label>
+                    <input type="number" id="tkrObsDensity" placeholder="e.g. 742">
+                </div>
+                
+                <div class="input-group">
+                    <label>Temperature (°C)</label>
+                    <input type="number" id="tkrTemp" placeholder="e.g. 25.5">
+                </div>
+
+                <div class="input-group">
+                    <label>Challan Density (@ 15°C)</label>
+                    <input type="number" id="challanDensity" placeholder="From Invoice">
+                </div>
+
+                <button class="calc-btn" id="btnCalcInvoice">Verify Variance</button>
+                
+                <div id="resInvoice" class="result-area"></div>
+            </div>
+        </section>
+    </main>
+
+    <nav class="bottom-nav">
+        <div class="nav-item active" onclick="showPage('home', 'Home', this)">
+            <div class="nav-icon">🏠</div>
+            <span>Home</span>
+        </div>
+        <div class="nav-item" onclick="showPage('density-page', 'Density', this)">
+            <div class="nav-icon">🧪</div>
+            <span>Density</span>
+        </div>
+        <div class="nav-item" onclick="showPage('tank-page', 'Stock', this)">
+            <div class="nav-icon">⛯</div>
+            <span>Stock</span>
+        </div>
+        <div class="nav-item" onclick="showPage('invoice-page', 'Invoice', this)">
+            <div class="nav-icon">🚛</div>
+            <span>Invoice</span>
+        </div>
+    </nav>
+
+    <script src="density.js"></script>
+    <script src="invoice.js"></script>
+    <script type="module" src="app.js"></script>
+    <script type="module" src="density.js"></script>
+    <script>
+        const dateOptions = { weekday: 'short', day: 'numeric', month: 'short' };
+        const formattedDate = new Date().toLocaleDateString('en-GB', dateOptions);
+        
+        document.getElementById('date-display').innerText = formattedDate;
+        if(document.getElementById('date-display-large')) {
+            document.getElementById('date-display-large').innerText = formattedDate;
+        }
+    </script>
+</body>
+</html>
