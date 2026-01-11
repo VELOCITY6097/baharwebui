@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
 
-    <!-- Mobile & PWA -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="theme-color" content="#0b1f33">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -11,14 +10,11 @@
 
     <title>FuelMaster Pro</title>
 
-    <!-- PWA Manifest -->
     <link rel="manifest" href="manifest.json">
 
-    <!-- App Icons -->
     <link rel="icon" href="favicon.ico">
     <link rel="apple-touch-icon" href="icon-192.png">
 
-    <!-- Styles -->
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
@@ -93,6 +89,7 @@
                     <input type="number" id="temp" placeholder="e.g. 25.5" step="0.5">
                 </div>
                 <button class="calc-btn" id="btnCalcDensity">Calculate Density</button>
+                <button class="reset-btn" id="btnResetDensity">🔄 Reset Fields</button>
                 <div id="resDensity" class="result-area"></div>
             </div>
         </section>
@@ -135,6 +132,7 @@
                 </div>
 
                 <button class="calc-btn" id="btnCalcInvoice">Verify Variance</button>
+                <button class="reset-btn" id="btnResetInvoice">🔄 Reset Audit</button>
                 
                 <div id="resInvoice" class="result-area"></div>
             </div>
@@ -163,7 +161,6 @@
     <script src="density.js"></script>
     <script src="invoice.js"></script>
     <script type="module" src="app.js"></script>
-    <script type="module" src="density.js"></script>
     <script>
         const dateOptions = { weekday: 'short', day: 'numeric', month: 'short' };
         const formattedDate = new Date().toLocaleDateString('en-GB', dateOptions);
