@@ -87,3 +87,11 @@ document.getElementById('btnCalcInvoice').onclick = () => {
         `;
     }, 800); 
 };
+
+// --- NEW RESET LOGIC ---
+document.getElementById('btnResetInvoice').onclick = () => {
+    document.getElementById('tkrObsDensity').value = '';
+    document.getElementById('tkrTemp').value = '';
+    document.getElementById('challanDensity').value = '';
+    document.getElementById('resInvoice').innerHTML = '';
+};
