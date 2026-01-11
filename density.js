@@ -172,3 +172,10 @@ document.getElementById('btnCalcDensity').onclick = () => {
         `;
     }, 800); 
 };
+
+// --- NEW RESET LOGIC ---
+document.getElementById('btnResetDensity').onclick = () => {
+    document.getElementById('obsDensity').value = '';
+    document.getElementById('temp').value = '';
+    document.getElementById('resDensity').innerHTML = '';
+};
